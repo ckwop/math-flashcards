@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> MST 124 : Trig Flash Cards </title>
+        <style>
+            div { 
+                align-content: center; /* vertical centering*/
+                display: grid;           
+            }
+
+            .FlashCard {
+                margin: auto; 
+                width: 50vw;
+                top: 50vh;
+                height: 100%;
+                border: 1px solid lightseagreen; 
+            }
+
+            h3 
+            {
+                margin: auto;
+                font-family: verdana;
+                margin-bottom: 1em;
+            }
+
+            .FlashCard button {
+                margin: auto;
+                width: 25vw;
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>  
+    <body>
+        <div> 
+            <h3> Flash-cards for MST 124</h3>
+            <div class="FlashCard">
+                <label id="Problem"></label>
+                <button id="ShowSolution">Show Solution</button> 
+                <button id="Next">Next</button>
+            </div>
+        </div>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </body>
+
+    <script defer>
+        const problem = document.getElementById("Problem");
+        const next = document.getElementById("Next");
+        const showSolutionButton = document.getElementById("ShowSolution");
+
+      
+        function refresh_math_rendering() {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('Solution')]);
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('Problem')]);
+        }
+      
+        function pick_random_question(problems) {
+            randomIndex = Math.floor(Math.random() * problems.length);
+            return problems[randomIndex]
+        }
+
+        function render_problem(selectedProblem) {
+            problem.innerText = "$$" + selectedProblem.Problem + "=$$";
+            showSolutionButton.style.display = "inline";
+            next.style.display = "none";
+            refresh_math_rendering();
+        }
+      
+        var problems = [
+            { "Problem": '\\sin(30^{\\circ})', "Solution" : '\\frac{1}{2}'}, 
+            { "Problem" : "\\cos(30^{\\circ})", "Solution": '\\frac{\\sqrt{3}}{2}'},
+            { "Problem" : "\\tan(30^{\\circ})", "Solution": '\\frac{\\sqrt{3}}{3}'},
+            { "Problem": '\\sin(\\frac{\\pi}{6})', "Solution" : '\\frac{1}{2}'},
+            { "Problem" : "\\cos(\\frac{\\pi}{6})", "Solution": '\\frac{\\sqrt{3}}{2}'},
+            { "Problem" : "\\tan(\\frac{\\pi}{6})", "Solution": '\\frac{\\sqrt{3}}{3}'},
+            { "Problem" : "\\sin(0)", "Solution": '0'},
+            { "Problem" : "\\cos(0)", "Solution": '1'},
+        ];
+        
+        showSolutionButton.onclick = function() {
+            problem.innerText = "$$" + currentProblem.Problem + "=" + currentProblem.Solution + "$$";
+            refresh_math_rendering();  
+            next.style.display = "inline";
+            showSolutionButton.style.display = "none";
+        }
+
+        next.onclick = function() {
+            currentProblem = pick_random_question(problems);
+            render_problem(currentProblem);
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {   
+            currentProblem = pick_random_question(problems);
+            render_problem(currentProblem);
+        });
+    </script>
+</html>
