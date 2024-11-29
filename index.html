@@ -46,7 +46,7 @@
         const problem = document.getElementById("Problem");
         const next = document.getElementById("Next");
         const showSolutionButton = document.getElementById("ShowSolution");
-
+        problems = [];
       
         function refresh_math_rendering() {
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('Solution')]);
@@ -65,23 +65,6 @@
             refresh_math_rendering();
         }
       
-        var problems = [
-            { "Problem": '\\sin(30^{\\circ})', "Solution" : '\\frac{1}{2}'}, 
-            { "Problem" : "\\cos(30^{\\circ})", "Solution": '\\frac{\\sqrt{3}}{2}'},
-            { "Problem" : "\\tan(30^{\\circ})", "Solution": '\\frac{\\sqrt{3}}{3}'},
-            { "Problem": '\\sin(\\frac{\\pi}{6})', "Solution" : '\\frac{1}{2}'},
-            { "Problem" : "\\cos(\\frac{\\pi}{6})", "Solution": '\\frac{\\sqrt{3}}{2}'},
-            { "Problem" : "\\tan(\\frac{\\pi}{6})", "Solution": '\\frac{\\sqrt{3}}{3}'},
-            { "Problem" : "\\sin(0)", "Solution": '0'},
-            { "Problem" : "\\cos(0)", "Solution": '1'},
-            { "Problem" : "\\tan(0)", "Solution": '0'},
-            { "Problem" : "\\sin(\\frac{\\pi}{4})", "Solution": '\\frac{\\sqrt{2}}{2}'},
-            { "Problem" : "\\cos(\\frac{\\pi}{4})", "Solution": '\\frac{\\sqrt{2}}{2}'},
-            { "Problem" : "\\tan(\\frac{\\pi}{4})", "Solution": '1'},
-            { "Problem" : "\\sin(\\frac{45^{\\circ})", "Solution": '\\frac{\\sqrt{2}}{2}'},
-            { "Problem" : "\\cos(\\frac{45^{\\circ})", "Solution": '\\frac{\\sqrt{2}}{2}'},
-            { "Problem" : "\\tan(\\frac{45^{\\circ})", "Solution": '1'},
-        ];
         
         showSolutionButton.onclick = function() {
             problem.innerText = "$$" + currentProblem.Problem + "=" + currentProblem.Solution + "$$";
@@ -99,5 +82,10 @@
             currentProblem = pick_random_question(problems);
             render_problem(currentProblem);
         });
+
+       fetch("problems.json")
+       .then((response) => { return response.json() })
+       .then(json => {problems = json; currentProblem = problems[0]; render_problem(currentProblem)});
+
     </script>
 </html>
