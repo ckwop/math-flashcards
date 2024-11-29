@@ -11,7 +11,7 @@
     { "Problem" : "\\sin(\\frac{\\pi}{4})", "Solution": "\\frac{\\sqrt{2}}{2}"},
     { "Problem" : "\\cos(\\frac{\\pi}{4})", "Solution": "\\frac{\\sqrt{2}}{2}"},
     { "Problem" : "\\tan(\\frac{\\pi}{4})", "Solution": "1"},
-    { "Problem" : "\\sin(\\frac{45^{\\circ})", "Solution": "\\frac{\\sqrt{2}}{2}"},
-    { "Problem" : "\\cos(\\frac{45^{\\circ})", "Solution": "\\frac{\\sqrt{2}}{2}"},
-    { "Problem" : "\\tan(\\frac{45^{\\circ})", "Solution": "1"}
+    { "Problem" : "\\sin(45^{\\circ})", "Solution": "\\frac{\\sqrt{2}}{2}"},
+    { "Problem" : "\\cos(45^{\\circ})", "Solution": "\\frac{\\sqrt{2}}{2}"},
+    { "Problem" : "\\tan(45^{\\circ})", "Solution": "1"}
 ]
