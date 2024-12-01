@@ -82,7 +82,7 @@
         }
 
         function show_next_problem() {
-            currentIndex = currentIndex + 1 % problems.length
+            currentIndex = (currentIndex + 1) % problems.length
             nextProblem = problems[currentIndex];
             render_problem(nextProblem);
         }
