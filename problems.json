@@ -14,10 +14,10 @@
     { "Problem" : "\\sin(45^{\\circ})", "Solution": "\\frac{\\sqrt{2}}{2}"},
     { "Problem" : "\\cos(45^{\\circ})", "Solution": "\\frac{\\sqrt{2}}{2}"},
     { "Problem" : "\\tan(45^{\\circ})", "Solution": "1"},
-    { "Problem" : "\\sin(60^{\\circ})", "Solution": "\\frac{\\sqrt{3}{2}"},
+    { "Problem" : "\\sin(60^{\\circ})", "Solution": "\\frac{\\sqrt{3}}{2}"},
     { "Problem" : "\\cos(60^{\\circ})", "Solution": "\\frac{1}{2}"},
     { "Problem" : "\\tan(60^{\\circ})", "Solution": "\\sqrt{3}"},
-    { "Problem" : "\\sin(\\frac{\\pi}{3})", "Solution": "\\frac{\\sqrt{3}{2}"},
+    { "Problem" : "\\sin(\\frac{\\pi}{3})", "Solution": "\\frac{\\sqrt{3}}{2}"},
     { "Problem" : "\\cos(\\frac{\\pi}{3})", "Solution": "\\frac{1}{2}"},
     { "Problem" : "\\tan(\\frac{\\pi}{3})", "Solution": "\\sqrt{3}"}
 ]
