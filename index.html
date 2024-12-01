@@ -47,6 +47,8 @@
         const problem = document.getElementById("Problem");
         const next = document.getElementById("Next");
         const showSolutionButton = document.getElementById("ShowSolution");
+        var currentIndex = 0;
+
         problems = [];
       
         function refresh_math_rendering() {
@@ -65,28 +67,47 @@
             next.style.display = "none";
             refresh_math_rendering();
         }
+
+        function shuffle(array) {
+            var workingArray = array.slice(0);
+
+            for (var i = array.length - 1; i >= 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = workingArray[i];
+                workingArray[i] = workingArray[j];
+                workingArray[j] = temp;
+            }
+
+            return workingArray;
+        }
+
+        function show_next_problem() {
+            currentIndex = currentIndex + 1 % problems.length
+            nextProblem = problems[currentIndex];
+            render_problem(nextProblem);
+        }
+
+        function show_solution() {
+            currentProblem = problems[currentIndex];
+            problem.innerText = "$$" + currentProblem.Problem + "=" + currentProblem.Solution + "$$";
+            refresh_math_rendering();  
+        }
       
         
         showSolutionButton.onclick = function() {
-            problem.innerText = "$$" + currentProblem.Problem + "=" + currentProblem.Solution + "$$";
-            refresh_math_rendering();  
+            show_solution();
             next.style.display = "inline";
             showSolutionButton.style.display = "none";
         }
 
-        next.onclick = function() {
-            currentProblem = pick_random_question(problems);
-            render_problem(currentProblem);
-        }
-
-        window.addEventListener("DOMContentLoaded", function() {   
-            currentProblem = pick_random_question(problems);
-            render_problem(currentProblem);
-        });
+        next.onclick = show_next_problem;
 
        fetch("problems.json")
        .then((response) => { return response.json() })
-       .then(json => {problems = json; currentProblem = problems[0]; render_problem(currentProblem)});
+       .then(json => {
+                        problems = shuffle(json); 
+                        currentProblem = problems[0]; 
+                        render_problem(currentProblem)});
 
     </script>
 </html>
